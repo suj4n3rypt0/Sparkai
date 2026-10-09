@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0b0d12" />
+  <meta name="description" content="StudySpark — your AI-powered study companion." />
+  <title>StudySpark — AI Study Assistant</title>
+  <link rel="stylesheet" href="/style.css" />
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand-row">
+        <div class="brand-mark" aria-hidden="true"><span>✦</span></div>
+        <div class="brand-name">study<span>spark</span><small>AI STUDY COMPANION</small></div>
+        <button class="icon-button mobile-close" id="closeSidebar" aria-label="Close sidebar">×</button>
+      </div>
+      <button class="new-chat" id="newChat"><span>＋</span> New study session <kbd>⌘ K</kbd></button>
+      <div class="sidebar-label">WORKSPACE</div>
+      <nav class="nav-list" aria-label="Study tools">
+        <button class="nav-item active" data-mode="Explain a topic"><span class="nav-icon">✧</span> AI tutor <span class="nav-dot"></span></button>
+        <button class="nav-item" data-mode="Exam preparation"><span class="nav-icon">▤</span> Exam prep</button>
+        <button class="nav-item" data-mode="Quiz me"><span class="nav-icon">◉</span> Practice quiz</button>
+        <button class="nav-item" data-mode="Summarize notes"><span class="nav-icon">≡</span> Note summarizer</button>
+        <button class="nav-item" data-mode="Coding help"><span class="nav-icon">&lt;/&gt;</span> Coding buddy</button>
+      </nav>
+      <div class="history-head"><span class="sidebar-label">RECENT CHATS</span><button id="clearHistory" class="text-button">Clear</button></div>
+      <div id="historyList" class="history-list"><p class="empty-history">Your study sessions will appear here.</p></div>
+      <div class="sidebar-bottom">
+        <div class="profile-avatar">S</div>
+        <div class="profile-text"><strong>Student workspace</strong><span>First-year edition</span></div>
+        <span class="online-dot" title="App ready"></span>
+      </div>
+    </aside>
+
+    <main class="main-panel">
+      <header class="topbar">
+        <button class="icon-button menu-button" id="openSidebar" aria-label="Open sidebar">☰</button>
+        <div class="breadcrumb">Workspace <span>/</span> <strong id="currentModeLabel">AI tutor</strong></div>
+        <div class="topbar-right"><span class="status-pill"><i></i> AI study mode</span><button id="themeToggle" class="icon-button" aria-label="Toggle theme" title="Toggle theme">☼</button></div>
+      </header>
+
+      <section class="chat-scroll" id="chatScroll" aria-live="polite">
+        <div class="welcome" id="welcome">
+          <div class="eyebrow"><span class="sparkle">✦</span> YOUR PERSONAL STUDY PARTNER</div>
+          <h1>Make room for<br /><span>that lightbulb moment.</span></h1>
+          <p class="welcome-copy">Big question, tricky concept, or last-minute revision?<br class="desktop-break" /> Let's work through it together.</p>
+          <div class="suggestion-grid">
+            <button class="suggestion-card" data-prompt="Explain database normalization with a simple example."><span class="card-icon violet">▦</span><span><strong>Break down a concept</strong><small>Make complex topics click</small></span><b>↗</b></button>
+            <button class="suggestion-card" data-prompt="Create a 5-question multiple-choice quiz on basic programming. Ask one question at a time."><span class="card-icon blue">◉</span><span><strong>Test my knowledge</strong><small>Practice with a quick quiz</small></span><b>↗</b></button>
+            <button class="suggestion-card" data-prompt="Help me make a realistic 7-day study plan for my college subjects."><span class="card-icon orange">▤</span><span><strong>Build a study plan</strong><small>Turn goals into small steps</small></span><b>↗</b></button>
+            <button class="suggestion-card" data-prompt="Explain the difference between a variable, an array, and a pointer in C, with short examples."><span class="card-icon green">&lt;/&gt;</span><span><strong>Get coding help</strong><small>Understand code, not just copy</small></span><b>↗</b></button>
+          </div>
+        </div>
+        <div id="messages" class="messages"></div>
+      </section>
+
+      <footer class="composer-area">
+        <div class="composer-wrap">
+          <div class="mode-row"><span class="mode-label">STUDY MODE</span><select id="modeSelect" aria-label="Choose study mode"><option>Explain a topic</option><option>Exam preparation</option><option>Quiz me</option><option>Summarize notes</option><option>Coding help</option></select><span class="composer-hint">AI can make mistakes — verify important facts.</span></div>
+          <form id="chatForm" class="composer">
+            <label class="visually-hidden" for="promptInput">Ask StudySpark a question</label>
+            <textarea id="promptInput" rows="1" maxlength="6000" placeholder="Ask anything you're studying…" required></textarea>
+            <div class="composer-bottom"><span class="input-tip"><kbd>Enter</kbd> to send <span>·</span> <kbd>Shift + Enter</kbd> for a new line</span><button type="submit" id="sendButton" class="send-button" aria-label="Send message"><span>Send</span><b>↑</b></button></div>
+          </form>
+          <div class="footer-note"><span class="tiny-spark">✦</span> Built for curious minds <span>•</span> Powered by AI</div>
+        </div>
+      </footer>
+    </main>
+  </div>
+  <div class="toast" id="toast" role="status"></div>
+</body>
+</html>
